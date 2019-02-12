@@ -58,7 +58,7 @@ def word_substituter(twitter)
     result = []
     twitter.split(" ").each do |word|
       word_hash = word_processing(word) # we got prefix, letters, and suffix here through a hash
-      if word_hash[:letter] == key
+      if word_hash[:letter].downcase == key
         word_hash[:letter] = value
       end
       result.push(word_hash[:prefix] + word_hash[:letter] + word_hash[:suffix])
