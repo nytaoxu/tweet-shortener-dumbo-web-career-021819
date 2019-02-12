@@ -67,3 +67,7 @@ def word_substituter(twitter)
   end
   twitter
 end
+
+def bulk_tweet_shortener
+  
+end
