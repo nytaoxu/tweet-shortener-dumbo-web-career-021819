@@ -1,1 +1,69 @@
 # Write your code here.
+
+def dictionary
+  {
+    "hello" => "hi",
+    "to" => "2",
+    "two" => "2",
+    "too" => "2",
+    "for" => "4",
+    "four" => "4",
+    "be" => "b",
+    "you" => "u",
+    "at" => "@",
+    "and" => "&"
+  }
+end
+
+def isLetter(character)
+  if ('a'..'z').to_a.include?(character.downcase)
+    return true
+  else
+    return false
+  end
+end
+
+def word_processing(word)
+  word_array = word.split("")
+  index = word_array.length - 1
+  current_status = :suffix # :suffix, :letter, :prefix
+  hash = {
+    :prefix => "",
+    :letter => "",
+    :suffix => ""
+  }
+  while index >= 0
+    if current_status == :suffix
+      if isLetter(word_array[index])
+        current_status = :letter
+      end
+      
+    elsif current_status == :letter
+      if !isLetter(word_array[index])
+        current_status = :prefix
+      end
+    
+    else # current_status == :prefix
+      
+    end
+    hash[current_status] = word_array[index] + hash[current_status]
+    index -= 1
+  end
+  hash
+end
+
+def word_substituter(twitter)
+  dictionary.each do |key, value|
+    # twitter.gsub!(key, value)
+    result = []
+    twitter.split(" ").each do |word|
+      word_hash = word_processing(word) # we got prefix, letters, and suffix here through a hash
+      if word_hash[:letter] == key
+        word_hash[:letter] = value
+      end
+      result.push(word_hash[:prefix] + word_hash[:letter] + word_hash[:suffix])
+    end
+    twitter = result.join(" ")
+  end
+  twitter
+end
