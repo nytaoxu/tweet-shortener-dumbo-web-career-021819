@@ -81,6 +81,6 @@ def selective_tweet_shortener(tweet)
   word_substituter(tweet)
 end
 
-def shortened_tweet_truncator
+def shortened_tweet_truncator(tweet)
   
 end
