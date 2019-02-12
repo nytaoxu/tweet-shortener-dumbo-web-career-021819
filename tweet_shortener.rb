@@ -80,3 +80,7 @@ def selective_tweet_shortener(tweet)
   end
   word_substituter(tweet)
 end
+
+def shortened_tweet_truncator
+  
+end
