@@ -82,6 +82,6 @@ def selective_tweet_shortener(tweet)
 end
 
 def shortened_tweet_truncator(tweet)
-  string = selective_tweet_shortener(tweet)
+  shortened_string = selective_tweet_shortener(tweet)
   
 end
